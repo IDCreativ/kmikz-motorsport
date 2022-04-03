@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<title>
+			{% block title %}KMiKZ Motorsport
+			{% endblock %}
+		</title>
+		<meta property="og:title" content="KMiKZ Motorsport : Équipe Simracing"/>
+		<meta property="og:description" content="KMiKZ Motorsport : Équipe Simracing. Participez à nos événements en ligne sur tous les jeux SimRacing du moment."/>
+		<meta property="og:image" content=""/>
+		<meta property="og:image:secure_url" content=""/>
+		<meta property="og:image:type" content="jpg"/>
+		<meta property="og:image:width" content="800"/>
+		<meta property="og:image:height" content="600"/>
+		<meta property="og:image:alt" content="KMiKZ Motorsport : Équipe Simracing"/>
+		<meta property="og:url" content="https://kmikz-motorsport.fr"/>
+		<meta property="fb:app_id" content=""/>
+		<meta property="og:type" content="website">
+		<meta property="og:locale" content="fr_FRANCE">
+		<meta property="og:site_name" content="KMiKZ Motorsport : Équipe Simracing">
+		<meta name="description" content="Site de compétitions SimRacing. Participez à nos événements en ligne sur tous les jeux SimRacing du moment.">
+		<link rel="apple-touch-icon" href="">
+		<link rel="icon" type="image/png" href=""/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="/">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="rn-gradient-circle">
+
+        </div>
+		<div class="rn-gradient-circle theme-pink">
+
+        </div>
+		<main>
+		{% block body %}{% endblock %}
+		</main>
+    </body>
+</html>

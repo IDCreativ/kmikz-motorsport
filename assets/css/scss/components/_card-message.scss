@@ -1,0 +1,105 @@
+.messages-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	height: auto;
+}
+
+.card-message {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	margin-right: auto;
+	margin-left: 0;
+	max-width: 50%;
+	// width: 50%;
+	border: none;
+	&.my-message {
+		flex-direction: row-reverse;
+		margin-left: auto;
+		margin-right: 0;
+		.card-body {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: flex-end;
+			margin: 0 10px 0 0;
+	        width: calc(100% - 80px);
+			border-radius: $border-radius $border-radius 0 $border-radius;
+			&::after {
+				z-index: -1;
+				content: "";
+				position: absolute;
+
+				height: 50%;
+				width: 80px;
+
+				bottom: 0;
+
+				right: -80px;
+
+				border-radius: 0 0 0 40px;
+				-moz-border-radius: 0 0 0 410px;
+				-webkit-border-radius: 0 0 0 40px;
+
+				-webkit-box-shadow: -40px 0 0 0 #f5f5f5;
+				box-shadow: -40px 0 0 0 #f5f5f5;
+			}
+			&::before {
+				display: none;
+			}
+		}
+	}
+	.user-avatar {
+		border-radius: 50%;
+		height: 80px;
+		width: 80px;
+		margin: 0 0 5px 0;
+		overflow: hidden;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	.card-body {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		margin: 0 0 0 10px;
+		border-radius: $border-radius $border-radius $border-radius 0;
+		background: #f5f5f5;
+		&::before {
+			z-index: -1;
+			content: "";
+			position: absolute;
+
+			height: 50%;
+			width: 80px;
+
+			bottom: 0;
+			left: -80px;
+
+			border-radius: 0 0 40px 0;
+			-moz-border-radius: 0 0 40px 0;
+			-webkit-border-radius: 0 0 40px 0;
+
+			-webkit-box-shadow: 40px 0 0 0 #f5f5f5;
+			box-shadow: 40px 0 0 0 #f5f5f5;
+		}
+	}
+}
+
+#all-messages {
+	height: 400px;
+	overflow: auto;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.card {
+	background: transparent;
+}

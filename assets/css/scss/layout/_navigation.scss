@@ -1,0 +1,19 @@
+nav {
+    border-radius: $radius;
+}
+
+nav {
+    border-radius: $radius;
+    min-height: 80px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img {
+        height: 50px;
+        width: auto;
+    }
+}

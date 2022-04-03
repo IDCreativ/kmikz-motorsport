@@ -1,0 +1,82 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+body {
+	margin: 0;
+	padding: 10px;
+    font-family: $body-font;
+}
+
+p {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 24px;
+	color: $body-color;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font;
+	text-transform: uppercase;
+}
+
+h1 {
+	position: relative;
+	margin-bottom: 3rem;
+	&:after {
+		position: absolute;
+		left: 0;
+		bottom: -1rem;
+		content: "";
+		background: $primary;
+		height: 2px;
+		width: 5rem;
+	}
+}
+
+h2 {
+	position: relative;
+	margin-bottom: 3rem;
+	&:after {
+		position: absolute;
+		left: 0;
+		bottom: -1rem;
+		content: "";
+		background: $primary;
+		height: 2px;
+		width: 5rem;
+	}
+}
+
+a,
+a:hover {
+	text-decoration: none;
+}
+
+.flash-messages {
+	position: absolute;
+	top: 100px;
+	z-index: 100;
+	animation: flashReveal 0.4s ease-in-out;
+}
+
+// Main
+main {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	// background: $body-bg;
+}

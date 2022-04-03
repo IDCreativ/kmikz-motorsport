@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ 'menu.home'|trans }}
+	-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% include '_blocks/slider-home.html.twig' %}
+
+	{% include '_blocks/cards-group.html.twig' %}
+
+    <div class="container">
+		<hr class="section-divider">
+	</div>
+
+    {% include '_blocks/masonry.html.twig' %}
+
+    <div class="container">
+		<hr class="section-divider">
+	</div>
+
+    {% include '_blocks/sections.html.twig' %}
+
+{% endblock %}

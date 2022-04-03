@@ -1,0 +1,32 @@
+#maintenance {
+    width: 100%;
+    height: calc(100vh - 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .logo-wrapper {
+        width: 80%;
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+    .social-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3rem 0 0 0;
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            width: 300px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
