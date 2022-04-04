@@ -11420,34 +11420,6 @@ h6,
   text-transform: uppercase;
 }
 
-h1, .h1 {
-  position: relative;
-  margin-bottom: 3rem;
-}
-h1:after, .h1:after {
-  position: absolute;
-  left: 0;
-  bottom: -1rem;
-  content: "";
-  background: #059DFF;
-  height: 2px;
-  width: 5rem;
-}
-
-h2, .h2 {
-  position: relative;
-  margin-bottom: 3rem;
-}
-h2:after, .h2:after {
-  position: absolute;
-  left: 0;
-  bottom: -1rem;
-  content: "";
-  background: #059DFF;
-  height: 2px;
-  width: 5rem;
-}
-
 a,
 a:hover {
   text-decoration: none;
@@ -11462,12 +11434,13 @@ a:hover {
 }
 
 main {
-  height: 100%;
-  padding: 0;
+  height: calc(100vh - 100px);
+  padding: 100px 0 0;
   margin: 0;
 }
 
 nav {
+  margin: 10px;
   border-radius: 4px;
 }
 
@@ -11485,6 +11458,13 @@ nav {
 .logo-container img {
   height: 50px;
   width: auto;
+}
+
+footer {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #maintenance {
