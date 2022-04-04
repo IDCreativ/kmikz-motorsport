@@ -41,7 +41,7 @@ class AppController extends AbstractController
     public function testEmail(MailerInterface $mailer): Response
     {
         $email = (new TemplatedEmail())
-                ->from('no-reply@forum-agco.fr')
+                ->from('no-reply@kmikz-motorsport.fr')
                 ->to(new Address('aka.sk3ud@gmail.com'))
                 ->subject('Demande de Rendez-vous')
                 ->htmlTemplate('emails/email-test.html.twig')
