@@ -11434,9 +11434,23 @@ a:hover {
 }
 
 main {
-  height: calc(100vh - 100px);
-  padding: 100px 0 0;
+  padding: 0;
   margin: 0;
+}
+main#main-site {
+  min-height: calc(100vh - 120px);
+  padding: 0;
+  margin: 100px 0 0;
+}
+main#blank {
+  height: calc(100vh - 20px);
+  padding: 0;
+  margin: 0;
+}
+main#dashboard {
+  min-height: calc(100vh - 120px);
+  padding: 0;
+  margin: 100px 0 0;
 }
 
 nav {
@@ -11467,9 +11481,39 @@ footer {
   align-items: center;
 }
 
+.table {
+  margin-bottom: 0px;
+}
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.vich-image a {
+  height: 60px;
+}
+.vich-image a img {
+  height: 60px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+img.db_avatar {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.table-align-top {
+  vertical-align: top;
+}
+
 #maintenance {
   width: 100%;
-  height: calc(100vh - 20px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

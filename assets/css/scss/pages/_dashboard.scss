@@ -1,0 +1,29 @@
+.table {
+	margin-bottom: 0px;
+	th, td {
+		vertical-align: middle;
+	}
+}
+
+.vich-image {
+	a {
+		height: 60px;
+		img {
+			height: 60px;
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+}
+img {
+    &.db_avatar {
+		margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+.table-align-top {
+	vertical-align: top;
+}

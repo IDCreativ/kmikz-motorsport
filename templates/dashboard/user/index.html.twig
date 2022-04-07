@@ -1,0 +1,174 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Membres -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col d-flex justify-content-between mb-4">
+				<h1>Liste des membres ({{ users|length }})</h1>
+				{% if is_granted('ROLE_ADMIN')%}
+					<div class="">
+						<a class="btn btn-gradient border-0" href="{{ path('app_user_new') }}">
+							<i class="fal fa-plus"></i>
+						</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						{% if users|length > 0 %}
+							<div class="table-responsive">
+								<table id="users-table" class="table table-bordered">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="text-center">
+												<i class="fal fa-image fa-2x"></i>
+											</th>
+											<th>E-mail</th>
+											<th>Rôles</th>
+											<th>Validé ?</th>
+											<th>Pseudo</th>
+											<th>Prénom</th>
+											<th>Nom</th>
+											<th>Postes</th>
+											<th class="text-center">
+												<i class="fal fa-address-card fa-2x"></i>
+											</th>
+											{% if is_granted('ROLE_ADMIN') %}
+												<th>Actions</th>
+											{% endif %}
+										</tr>
+									</thead>
+									<tbody>
+										{% for user in users %}
+											<tr>
+												<td>{{ user.id }}</td>
+												<td class="text-center">
+													{% if user.imageName %}
+														<img class="db_avatar" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="">
+													{% else %}
+														<img class="db_avatar" src="/assets/img/default/default-avatar.jpg" alt="">
+													{% endif %}
+												</td>
+												<td>{{ user.email }}</td>
+												<td class="text-center">
+													<div class="d-none">{{ user.roles ? user.roles|json_encode : '' }}</div>
+													{% if "ROLE_ADMIN" in user.roles %}
+														<i class="fal fa-user-cog fa-2x"></i>
+													{% elseif "ROLE_ORGA" in user.roles %}
+														<i class="fal fa-user-tie fa-2x"></i>
+													{% else %}
+														<i class="fal fa-user fa-2x"></i>
+													{% endif %}
+												</td>
+												<td class="text-center">{{ user.isVerified ? '<i class="fal fa-check text-success fa-2x"></i>' : '<i class="fal fa-times text-danger fa-2x"></i>' }}</td>
+												<td>{{ user.pseudo ? user.pseudo : 'N/A' }}</td>
+												<td>{{ user.firstname ? user.firstname : 'N/A' }}</td>
+												<td>{{ user.lastname ? user.lastname : 'N/A' }}</td>
+												<td>
+													<div class="d-flex gap-3">
+														{% for job in user.job %}
+															<span>{{ job }}</span>
+														{% endfor %}
+													</div>
+												</td>
+												<td
+													class="text-center">
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-gradient border-0 mx-auto" data-bs-toggle="modal" data-bs-target="#userModal-{{ user.id }}">
+														<i class="fal fa-search"></i>
+													</button>
+													<div class="modal fade" id="userModal-{{ user.id }}" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-xl">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="userModalLabel">Membre :
+																		{{ user.pseudo ? user.pseudo : "[N/A]" }}</h5>
+																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																</div>
+																<div class="modal-body">
+																	<table class="table">
+																		<tbody>
+																			<tr>
+																				<th>#</th>
+																				<td>{{ user.id }}</td>
+																			</tr>
+																			<tr>
+																				<th>Email</th>
+																				<td>{{ user.email }}</td>
+																			</tr>
+																			<tr>
+																				<th>IsVerified</th>
+																				<td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+																			</tr>
+																			<tr>
+																				<th>Pseudo</th>
+																				<td>{{ user.pseudo }}</td>
+																			</tr>
+																			<tr>
+																				<th>Firstname</th>
+																				<td>{{ user.firstname }}</td>
+																			</tr>
+																			<tr>
+																				<th>Lastname</th>
+																				<td>{{ user.lastname }}</td>
+																			</tr>
+																			<tr>
+																				<th>Address</th>
+																				<td>{{ user.address }}</td>
+																			</tr>
+																			<tr>
+																				<th>City</th>
+																				<td>{{ user.city }}</td>
+																			</tr>
+																			<tr>
+																				<th>PostalCode</th>
+																				<td>{{ user.postalCode }}</td>
+																			</tr>
+																			<tr>
+																				<th>Telephone</th>
+																				<td>{{ user.telephone }}</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-gradient border-0" data-bs-dismiss="modal">Fermer</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+												{% if is_granted('ROLE_ADMIN') %}
+													<td class="text-center">
+														<a class="btn btn-outline-warning btn-sm m-1" href="{{ path('app_user_edit', {'id': user.id}) }}">
+															<i class="fal fa-pen fa-fw"></i>
+														</a>
+														{{ include('dashboard/user/_delete_form.html.twig') }}
+													</td>
+												{% endif %}
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						{% else %}
+							<div class="alert alert-info text-center m-0" role="alert">
+								Pas d'enregistrement pour le moment.
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -44,7 +44,7 @@ class AppController extends AbstractController
                 ->from('no-reply@kmikz-motorsport.fr')
                 ->to(new Address('aka.sk3ud@gmail.com'))
                 ->subject('Demande de Rendez-vous')
-                ->htmlTemplate('emails/email-test.html.twig')
+                ->htmlTemplate('__modeles/emails/email-test.html.twig')
                 ->context([
                     'appointment' => 'coucou'
             ]);
@@ -53,5 +53,15 @@ class AppController extends AbstractController
 
             $this->addFlash('success', 'Votre rendez-vous a bien été pris en compte. Un e-mail contenant les informations de votre demande de rendez-vous vous a été envoyé.');
             return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("cgu", name="cgu", methods={"GET"})
+     */
+    public function cgu()
+    {
+        return $this->render('app/cgu.html.twig', [
+            'controller_name' => 'Conditions d\'utilisation du site KMiKZ Motorsport',
+        ]);
     }
 }

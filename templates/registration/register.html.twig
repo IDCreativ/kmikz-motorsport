@@ -1,21 +1,53 @@
-{% extends 'base.html.twig' %}
+{% extends 'blank.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				{% if app.user %}
+					<div class="alert alert-info" role="alert">
+						Vous êtes connecté en tant que
+						{{ app.user.username }},
+						<a href="{{ path('app_logout') }}">Se déconnecter</a>
+					</div>
+				{% else %}
+					<h1 class="h3 mb-3 font-weight-normal">Créer un compte</h1>
+					<div class="card shadow-sm">
+                        <div class="card-header">
+                            Je m'inscris ou <a href="{{ path('app_login') }}">je me connecte</a>
+                        </div>
+						<div class="card-body">
 
-    <h1>Register</h1>
+							{{ form_start(registrationForm) }}
+							{{ form_row(registrationForm.email, {
+                            label: 'E-mail'
+                        }) }}
+							{{ form_row(registrationForm.plainPassword, {
+                            label: 'Mot de passe'
+                        }) }}
+                        <div><small class="form-text text-muted mt-4"><a href="{{ path('cgu') }}" title="Condition d'utilisation" target="_blank">Lire les conditions générales d'utilisation</a></small></div>
+							{{ form_row(registrationForm.agreeTerms, {
+                            label: 'Accepter les CGU'
+                        }) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+							<button type="submit" class="btn btn-gradient border-0">S'enregistrer</button>
+							{{ form_end(registrationForm) }}
+						</div>
+					</div>
+				{% endif %}
+				<div class="mt-1">
+					<a href="{{ path('home') }}">
+						<i class="fal fa-long-arrow-left mt-3"></i>
+						Retour
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
